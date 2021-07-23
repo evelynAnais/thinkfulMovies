@@ -9,7 +9,7 @@ exports.up = function(knex) {
     table.string('state');
     table.string('zip');
     table.timestamp(true, true);
-  })
+  });
 };
 
 exports.down = function(knex) {

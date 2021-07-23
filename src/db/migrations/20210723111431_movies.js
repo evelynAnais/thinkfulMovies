@@ -8,7 +8,7 @@ exports.up = function(knex) {
     table.text('description');
     table.string('image_url');
     table.timestamps(true, true);
-  })
+  });
 };
 
 exports.down = function(knex) {

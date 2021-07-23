@@ -16,7 +16,7 @@ exports.up = function(knex) {
     table.boolean('is_showing');
 
     table.timestamps(true, true);  
-  })
+  });
 };
 
 exports.down = function(knex) {
