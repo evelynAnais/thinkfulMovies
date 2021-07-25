@@ -4,4 +4,4 @@ function errorHandler(err, req, res, next) {
   res.status(status).json({ error: message })
 }
 
-module.exports = errorHandler
+module.exports = errorHandler;

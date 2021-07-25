@@ -1,6 +1,6 @@
 if (process.env.USER) require("dotenv").config();
 const express = require("express");
-const cors = require('cors')
+const cors = require('cors');
 
 const notFound = require('./errors/notFound');
 const errorHandler = require('./errors/errorHandler');
