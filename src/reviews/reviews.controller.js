@@ -1,8 +1,8 @@
 const service = require('./reviews.service');
-const hasProperties = require('../errors/hasProperties')
+const hasProperties = require('../errors/hasProperties');
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
 
-const hasRequiredProperties = hasProperties('content' || 'score')
+const hasRequiredProperties = hasProperties('content' || 'score');
 
 const VALID_PROPERTIES = [
   'review_id',
@@ -13,7 +13,7 @@ const VALID_PROPERTIES = [
   'critic_id',
   'movie_id',
   'critic',
-]
+];
 
 function hasOnlyValidProperties(req, res, next) {
   const { data = {} } = req.body;
@@ -35,7 +35,7 @@ async function reviewExists(req, res, next) {
     res.locals.review = review;
     return next();
   }
-  next({ status: 404, message: `Review cannot be found.` })
+  next({ status: 404, message: `Review cannot be found.` });
 }
 
 async function list(req, res) {
@@ -47,9 +47,9 @@ async function update(req, res) {
     ...req.body.data,
     review_id: res.locals.review.review_id,
   };
-  service.update(updatedReview)
-  let data = await service.list(res.locals.review.movie_id)
-  data = data.find(item => item.review_id === updatedReview.review_id)
+  service.update(updatedReview);
+  let data = await service.list(res.locals.review.movie_id);
+  data = data.find(item => item.review_id === updatedReview.review_id);
   res.json({ data });
 }
 

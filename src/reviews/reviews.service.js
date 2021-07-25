@@ -5,15 +5,12 @@ const addCritic = mapProperties({
   preferred_name: 'critic.preferred_name',
   surname: 'critic.surname',
   organization_name: 'critic.organization_name',
-})
+});
 
 function list(movieId) {
   return knex('reviews')
     .join('critics', 'reviews.critic_id', 'critics.critic_id')
-    .select(
-      'reviews.*',
-      'critics.*'
-    )
+    .select('reviews.*', 'critics.*')
     .where({ 'reviews.movie_id': movieId })
     .then((data) => data.map((i) => addCritic(i)));
 }
@@ -27,7 +24,7 @@ function update(updatedReview) {
   .select('*')
   .where({ review_id: updatedReview.review_id })
   .update(updatedReview, '*')
-  .then((updatedReviews) => updatedReviews[0])
+  .then((updatedReviews) => updatedReviews[0]);
 }
 
 function destroy(review_id) {
