@@ -9,7 +9,7 @@ function listShowingTrue() {
     .join('movies_theaters', 'movies.movie_id', 'movies_theaters.movie_id')
     .select('movies.*') 
     .where({ 'is_showing': true } )
-    .groupBy('movies.title', 'movies.movie_id');
+    .groupBy('movies.title', 'movies.movie_id', 'movies_theaters.movie_id');
 }
 
 function read(movie_id) {
